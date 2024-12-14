@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Decimal Time</title>
+  <title>Decimal Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000; /* Pure black background */
+      margin: 0; /* Remove default margin for full-screen */
+      overflow: hidden; /* Hide any potential scrollbars */
+      display: flex; /* Center content vertically */
+      justify-content: center; /* Center content horizontally */
+      align-items: center; /* Center content vertically */
+      min-height: 100vh; /* Ensure full viewport height */
+    }
+
+    #decimalTime {
+      font-family: 'Poiret One', cursive; /* Use Poiret One font */
+      font-size: 20vw; /* Massive font (20% of viewport width) */
+      color: #ddd; /* Light grey text */
+      text-align: center; /* Center text horizontally */
+    }
+  </style>
 </head>
 <body>
-    <p id="decimalTime"></p>
+  <p id="decimalTime"></p>
 
-    <script>
-        function displayDecimalTime() {
-            const now = new Date();
+  <script>
+    function displayDecimalTime() {
+      const now = new Date();
 
-            // Calculate decimal time
-            const dayFraction = now.getHours() / 24 + now.getMinutes() / (24 * 60) + now.getSeconds() / (24 * 60 * 60);
-            const decimalTime = dayFraction * 10;
+      // Calculate decimal time (same logic as before)
+      const dayFraction = now.getHours() / 24 + now.getMinutes() / (24 * 60) + now.getSeconds() / (24 * 60 * 60);
+      const decimalTime = dayFraction * 10;
 
-            // Format decimal time
-            const formattedTime = decimalTime.toFixed(2);
+      // Format decimal time (same logic as before)
+      const formattedTime = decimalTime.toFixed(2);
 
-            document.getElementById("decimalTime").textContent = "Decimal time is: " + formattedTime;
-        }
+      document.getElementById("decimalTime").textContent = formattedTime;
+    }
 
-        setInterval(displayDecimalTime, 1000); // Update time every second
-        displayDecimalTime(); // Initial display
-    </script>
+    setInterval(displayDecimalTime, 1000); // Update time every second
+    displayDecimalTime(); // Initial display
+  </script>
 </body>
 </html>
