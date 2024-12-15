@@ -31,9 +31,13 @@
     function displayDecimalTime() {
       const now = new Date();
 
-      // Calculate decimal time (same logic as before)
-      const dayFraction = now.getHours() / 24 + now.getMinutes() / (24 * 60) + now.getSeconds() / (24 * 60 * 60);
-      const decimalTime = dayFraction * 10;
+      // Calculate decimal time with seconds (in units of 100 per minute)
+      const dayFraction = now.getHours() / 24 
+        + now.getMinutes() / (24 * 60) 
+        + now.getSeconds() / (24 * 60 * 60) 
+        + now.getMilliseconds() / (24 * 60 * 60 * 1000); // Add milliseconds for seconds
+
+      const decimalTime = dayFraction * 10; // Multiply by 10 for desired units
 
       // Format decimal time (same logic as before)
       const formattedTime = decimalTime.toFixed(2);
