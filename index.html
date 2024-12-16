@@ -11,7 +11,7 @@
       margin: 0;
       overflow: hidden;
       display: flex;
-      justify-content: center;
+      justify-content: left;
       align-items: center;
       min-height: 100vh;
     }
@@ -42,7 +42,7 @@
       document.getElementById("decimalTime").textContent = formattedTime;
     }
 
-    setInterval(displayDecimalTime, 1000); // Update time every second
+    setInterval(displayDecimalTime, 100); // Update time every 10th of a second.
     displayDecimalTime(); // Initial display
   </script>
 </body>
