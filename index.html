@@ -36,8 +36,8 @@
       const decimalMinutes = now.getMinutes() * 100 / 60;
       const decimalSeconds = now.getSeconds() * 100 / 60;
 
-      // Format the decimal time with two decimal places
-      const formattedTime = `${decimalHours.toFixed(0)}:${decimalMinutes.toFixed(0)}:${decimalSeconds.toFixed(0)}`;
+      // Format the decimal time and round down each date part
+      const formattedTime = `${Math.floor(decimalHours)}:${Math.floor(decimalMinutes)}:${Math.floor(decimalSeconds)}`;
 
       document.getElementById("decimalTime").textContent = formattedTime;
     }
