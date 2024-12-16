@@ -18,7 +18,7 @@
 
     #decimalTime {
       font-family: 'Poiret One', cursive;
-      font-size: 20vw;
+      font-size: 15vw;
       color: #ddd;
       text-align: center;
     }
@@ -37,7 +37,7 @@
       const decimalSeconds = now.getSeconds() * 100 / 60;
 
       // Format the decimal time with two decimal places
-      const formattedTime = `${decimalHours.toFixed(2)}:${decimalMinutes.toFixed(2)}:${decimalSeconds.toFixed(2)}`;
+      const formattedTime = `${decimalHours.toFixed(0)}:${decimalMinutes.toFixed(0)}:${decimalSeconds.toFixed(0)}`;
 
       document.getElementById("decimalTime").textContent = formattedTime;
     }
