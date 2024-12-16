@@ -27,27 +27,19 @@
 <body>
   <p id="decimalTime"></p>
 
-  <script>
+    <script>
     function displayDecimalTime() {
       const now = new Date();
 
-      // Calculate hours
-      const hours = now.getHours();
+      // Convert to decimal time units (10-hour, 100-minute, 100-second day)
+      const decimalHours = now.getHours() * 10 / 24;
+      const decimalMinutes = now.getMinutes() * 100 / 60;
+      const decimalSeconds = now.getSeconds() * 100 / 60;
 
-      // Calculate minutes (remainder after removing hours)
-      const minutes = now.getMinutes() % 60;
+      // Format the decimal time with two decimal places
+      const formattedTime = `${decimalHours.toFixed(2)}:${decimalMinutes.toFixed(2)}:${decimalSeconds.toFixed(2)}`;
 
-      // Calculate seconds (remainder after removing minutes)
-      const seconds = now.getSeconds() % 60;
-
-      // Add leading zeros for single-digit values
-      const formattedHours = hours.toString().padStart(2, '0');
-      const formattedMinutes = minutes.toString().padStart(2, '0');
-      const formattedSeconds = seconds.toString().padStart(2, '0');
-
-      // Combine and display time
-      const decimalTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-      document.getElementById("decimalTime").textContent = decimalTime;
+      document.getElementById("decimalTime").textContent = formattedTime;
     }
 
     setInterval(displayDecimalTime, 1000); // Update time every second
