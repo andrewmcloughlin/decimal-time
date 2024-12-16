@@ -7,20 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000; /* Pure black background */
-      margin: 0; /* Remove default margin for full-screen */
-      overflow: hidden; /* Hide any potential scrollbars */
-      display: flex; /* Center content vertically */
-      justify-content: center; /* Center content horizontally */
-      align-items: center; /* Center content vertically */
-      min-height: 100vh; /* Ensure full viewport height */
+      background-color: #000;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
     #decimalTime {
-      font-family: 'Poiret One', cursive; /* Use Poiret One font */
-      font-size: 20vw; /* Massive font (20% of viewport width) */
-      color: #ddd; /* Light grey text */
-      text-align: center; /* Center text horizontally */
+      font-family: 'Poiret One', cursive;
+      font-size: 20vw;
+      color: #ddd;
+      text-align: center;
     }
   </style>
 </head>
@@ -31,18 +31,23 @@
     function displayDecimalTime() {
       const now = new Date();
 
-      // Calculate decimal time with seconds (in units of 100 per minute)
-      const dayFraction = now.getHours() / 24 
-        + now.getMinutes() / (24 * 60) 
-        + now.getSeconds() / (24 * 60 * 60) 
-        + now.getMilliseconds() / (24 * 60 * 60 * 1000); // Add milliseconds for seconds
+      // Calculate hours
+      const hours = now.getHours();
 
-      const decimalTime = dayFraction * 10; // Multiply by 10 for desired units
+      // Calculate minutes (remainder after removing hours)
+      const minutes = now.getMinutes() % 60;
 
-      // Format decimal time (same logic as before)
-      const formattedTime = decimalTime.toFixed(2);
+      // Calculate seconds (remainder after removing minutes)
+      const seconds = now.getSeconds() % 60;
 
-      document.getElementById("decimalTime").textContent = formattedTime;
+      // Add leading zeros for single-digit values
+      const formattedHours = hours.toString().padStart(2, '0');
+      const formattedMinutes = minutes.toString().padStart(2, '0');
+      const formattedSeconds = seconds.toString().padStart(2, '0');
+
+      // Combine and display time
+      const decimalTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+      document.getElementById("decimalTime").textContent = decimalTime;
     }
 
     setInterval(displayDecimalTime, 1000); // Update time every second
